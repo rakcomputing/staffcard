@@ -2,7 +2,6 @@
 
 import { supabase } from "@/lib/supabaseClient";
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 
 const Users = ({ params }) => {
   const { user: id } = params;
@@ -45,7 +44,7 @@ const Users = ({ params }) => {
         <div key={user.idnumber}>
           <div className="bg-background min-h-screen flex items-center justify-center">
             <div className="max-w-md w-full bg-card shadow-lg rounded-lg overflow-hidden">
-              <Image
+              <img
                 src="https://placehold.co/400x250/FF0000/FFFFFF?text=Staff+Member"
                 alt="staff-member"
                 width={400}
