@@ -41,7 +41,9 @@ const Users = ({ params }) => {
       }}
     >
       {list.map((user) => (
-        <div>
+        <div key={user.idnumber}>
+          {" "}
+          {/* Add a unique key here */}
           <div className="bg-background min-h-screen flex items-center justify-center">
             <div className="max-w-md w-full bg-card shadow-lg rounded-lg overflow-hidden">
               <img
