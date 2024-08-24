@@ -1,18 +1,16 @@
-"use client";
-
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { useState, useEffect } from "react";
 
 const Users = ({ params }) => {
   const { user: id } = params;
   const [list, setList] = useState([]);
 
-  const getList = async () => {
+  const getList = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from("tbl_user")
         .select()
-        .eq("idnumber", id); // Using the parameter to filter results
+        .eq("idnumber", id);
 
       if (error) {
         console.error("Error fetching data:", error);
@@ -23,13 +21,13 @@ const Users = ({ params }) => {
     } catch (err) {
       console.error("Unexpected error:", err);
     }
-  };
+  }, [id]);
 
   useEffect(() => {
     if (id) {
       getList();
     }
-  }, [id]); // Fetch data when `id` is available
+  }, [id, getList]);
 
   return (
     <div
@@ -42,8 +40,6 @@ const Users = ({ params }) => {
     >
       {list.map((user) => (
         <div key={user.idnumber}>
-          {" "}
-          {/* Add a unique key here */}
           <div className="bg-background min-h-screen flex items-center justify-center">
             <div className="max-w-md w-full bg-card shadow-lg rounded-lg overflow-hidden">
               <img
