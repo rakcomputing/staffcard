@@ -1,8 +1,6 @@
 "use client";
 
-import Users from "./username/[user]/page";
-
-const Home = () => {
+const User = () => {
   return (
     <div
       style={{
@@ -14,9 +12,8 @@ const Home = () => {
       }}
     >
       <p>Hello World</p>
-      <Users />
     </div>
   );
 };
 
-export default Home;
+export default User;
